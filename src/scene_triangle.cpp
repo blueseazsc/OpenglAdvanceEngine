@@ -17,10 +17,14 @@ public:
 
 		vertexBuffer.SetSize(3);
 		vertexBuffer.SetPosition(0, -0.5f, 0.5f, -0.2f);
+		vertexBuffer.SetTexcoord(0, -1.0f, 0.0f);
 		vertexBuffer.SetPosition(1, 0.5f, 0.5f, -0.2f);
+		vertexBuffer.SetTexcoord(1, 2.0f, 0.0f);
 		vertexBuffer.SetPosition(2, 0.0f, -0.5f, -0.2f);
+		vertexBuffer.SetTexcoord(2, 0.5f, 2.0f);
 		
 		shader.Init("../resources/triangle.vs", "../resources/triangle.fs");
+		shader.SetTexture("U_Texture", "../resources/head.png");
 	}
 	virtual void render(double currentTime)
 	{
