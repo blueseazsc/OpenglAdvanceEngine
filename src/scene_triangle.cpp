@@ -16,11 +16,11 @@ public:
 		ProjectionMatrix = glm::perspective(60.f, (float)info.windowWidth / (float)info.windowHeight, 0.1f, 1000.f);
 
 		vertexBuffer.SetSize(3);
-		vertexBuffer.SetPosition(0, -0.5f, 0.5f, -0.2f);
+		vertexBuffer.SetPosition(0, -0.5f, -0.5f, -0.2f);
 		vertexBuffer.SetTexcoord(0, -1.0f, 0.0f);
-		vertexBuffer.SetPosition(1, 0.5f, 0.5f, -0.2f);
+		vertexBuffer.SetPosition(1, 0.5f, -0.5f, -0.2f);
 		vertexBuffer.SetTexcoord(1, 2.0f, 0.0f);
-		vertexBuffer.SetPosition(2, 0.0f, -0.5f, -0.2f);
+		vertexBuffer.SetPosition(2, 0.0f, 0.5f, -0.2f);
 		vertexBuffer.SetTexcoord(2, 0.5f, 2.0f);
 		
 		shader.Init("../resources/triangle.vs", "../resources/triangle.fs");
