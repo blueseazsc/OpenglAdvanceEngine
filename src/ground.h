@@ -9,6 +9,8 @@ namespace framework {
 
 class Ground {
 public:
+	glm::mat4 mModelMatrix;
+public:
 	void Init();
 	void Draw(glm::mat4 &viewMatrix, glm::mat4 &projectionMatrix);
 	void SetAmbientMaterial(float r, float g, float b, float a);
@@ -17,7 +19,6 @@ public:
 protected:
 	VertexBuffer mVertexBuffer;
 	Shader mShader;
-	glm::mat4 mModelMatrix;
 };
 
 }

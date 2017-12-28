@@ -27,6 +27,7 @@ public:
 	void SetTexture(const char *name, const char *imagePath);
 	void Init(const char *vs, const char *fs);
 	void Bind(float *M, float *V, float *P);
+	GLint GetIT_ModelMatrixLocation() const { return mIT_ModelMatrixLocation; }
 protected:
 	GLuint CompileShader(GLenum shaderType, const char*shaderCode);
 	void CreateProgram(GLuint vsShader, GLuint fsShader);

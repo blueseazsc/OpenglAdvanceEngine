@@ -3,6 +3,7 @@
 #include "util.h"
 
 #include "ground.h"
+#include "model.h"
 
 using namespace framework;
 class Test:	public Application
@@ -15,6 +16,10 @@ public:
 		projectionMatrix = glm::perspective(60.f, (float)info.windowWidth / (float)info.windowHeight, 0.1f, 1000.f);
 
 		ground.Init();
+
+		model.Init("Res/Sphere.obj");
+		model.SetTexture("Res/earth.bmp");
+		model.SetPosition(0.0f, 0.0f, 0.0f);
 	}
 	virtual void render(double currentTime)
 	{
@@ -25,6 +30,7 @@ public:
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		ground.Draw(viewMatrix, projectionMatrix);
+		model.Draw(0.0f,0.0f,0.0f, viewMatrix, projectionMatrix);
 	}
 private:
 	double lastTime;
@@ -32,6 +38,7 @@ private:
 	glm::mat4 viewMatrix, projectionMatrix;
 
 	Ground ground;
+	Model model;
 };
 
 DECLARE_MAIN(Test);
