@@ -26,6 +26,10 @@ public:
 		model.Init("../resources/Sphere.obj");
 		model.SetTexture("../resources/earth.bmp");
 		model.SetPosition(0.0f, 0.0f, 0.0f);
+
+		niutou.Init("../resources/niutou.obj");
+		niutou.SetTexture("../resources/niutou.bmp");
+		niutou.mModelMatrix = glm::translate(-5.0f, 0.0f, 4.0f) * glm::scale(0.05f, 0.05f, 0.05f);
 	}
 	virtual void render(double currentTime)
 	{
@@ -38,6 +42,7 @@ public:
 		skybox.Draw(cameraPos.x, cameraPos.y, cameraPos.z, viewMatrix, projectionMatrix);
 		ground.Draw(viewMatrix, projectionMatrix);
 		model.Draw(cameraPos.x, cameraPos.y, cameraPos.z, viewMatrix, projectionMatrix);
+		niutou.Draw(cameraPos.x, cameraPos.y, cameraPos.z, viewMatrix, projectionMatrix);
 	}
 private:
 	double lastTime;
@@ -47,7 +52,7 @@ private:
 
 	SkyBox skybox;
 	Ground ground;
-	Model model;
+	Model model, niutou;
 };
 
 DECLARE_MAIN(Test);
