@@ -5,6 +5,7 @@
 #include "skybox.h"
 #include "ground.h"
 #include "model.h"
+#include "particlesystem.h"
 
 using namespace framework;
 class Test:	public Application
@@ -14,7 +15,7 @@ public:
 	{
 		lastTime = currentTime;
 
-		cameraPos = glm::vec3(10.0f, 5.0f, 10.0f);
+		cameraPos = glm::vec3(10.0f, 10.0f, 10.0f);
 
 		viewMatrix = glm::lookAt(cameraPos, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
@@ -30,19 +31,24 @@ public:
 		niutou.Init("../resources/niutou.obj");
 		niutou.SetTexture("../resources/niutou.bmp");
 		niutou.mModelMatrix = glm::translate(-5.0f, 0.0f, 4.0f) * glm::scale(0.05f, 0.05f, 0.05f);
+
+		ps.Init(0.0f, 0.0f, 0.0f);
 	}
 	virtual void render(double currentTime)
 	{
 		double frameTime = currentTime - lastTime;
 		lastTime = currentTime;
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.1f, 0.4f, 0.6f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		skybox.Draw(cameraPos.x, cameraPos.y, cameraPos.z, viewMatrix, projectionMatrix);
 		ground.Draw(viewMatrix, projectionMatrix);
 		model.Draw(cameraPos.x, cameraPos.y, cameraPos.z, viewMatrix, projectionMatrix);
 		niutou.Draw(cameraPos.x, cameraPos.y, cameraPos.z, viewMatrix, projectionMatrix);
+
+		// ps.Update(frameTime);
+		ps.Draw(viewMatrix, projectionMatrix);
 	}
 private:
 	double lastTime;
@@ -53,6 +59,7 @@ private:
 	SkyBox skybox;
 	Ground ground;
 	Model model, niutou;
+	ParticleSystem ps;
 };
 
 DECLARE_MAIN(Test);

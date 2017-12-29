@@ -1,6 +1,6 @@
 project( Test )
 
-add_executable( main main.cpp util.cpp vertexbuffer.cpp shader.cpp ground.cpp model.cpp skybox.cpp )
+add_executable( main main.cpp util.cpp vertexbuffer.cpp shader.cpp ground.cpp model.cpp skybox.cpp particlesystem.cpp)
 # add_executable( main scene_triangle.cpp util.cpp vertexbuffer.cpp shader.cpp )
 
 target_include_directories(main PUBLIC ${OPENGL_INCLUDE_DIR} ${GLFW_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${SOIL_INCLUDE_DIRS})

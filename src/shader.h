@@ -25,6 +25,7 @@ class Shader {
 public:
 	void SetVec4(const char *name, float x, float y, float z, float w);
 	void SetTexture(const char *name, const char *imagePath);
+	void SetTexture(const char *name, GLuint texture);
 	void Init(const char *vs, const char *fs);
 	void Bind(float *M, float *V, float *P);
 	GLint GetIT_ModelMatrixLocation() const { return mIT_ModelMatrixLocation; }

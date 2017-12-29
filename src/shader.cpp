@@ -125,3 +125,19 @@ void Shader::SetTexture(const char *name, const char *imagePath) {
 		iter->second.mTexture = CreateTextureFromImage(imagePath);
 	}
 }
+void Shader::SetTexture(const char *name, GLuint texture) {
+	auto iter = mUniformTextures.find(name);
+	if ( iter == mUniformTextures.end() ) {
+		GLint location = glGetUniformLocation(mProgram, name);
+		if (location != -1) {
+			UniformTexture v;
+			v.mTexture = texture;
+			v.mLocation = location;
+			mUniformTextures.insert(std::make_pair(name, v));
+		}
+	}
+	else {
+		glDeleteTextures(1, &iter->second.mTexture);
+		iter->second.mTexture = texture;
+	}
+}
