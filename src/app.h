@@ -7,10 +7,6 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
 
-// Include GLM
-#include <glm/glm.hpp>
-using namespace glm;
-
 #include "stdio.h"
 #include "string.h"
 
@@ -173,8 +169,8 @@ public:
         double dx, dy;
         glfwGetCursorPos(window, &dx, &dy);
 
-        x = static_cast<int>(floor(dx));
-        y = static_cast<int>(floor(dy));
+        x = static_cast<int>(dx);
+        y = static_cast<int>(dy);
     }
 
 public:

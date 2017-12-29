@@ -1,7 +1,6 @@
 #ifdef GL_ES
 precision mediump float;
 #endif
-
 uniform sampler2D U_Texture;
 uniform vec4 U_LightPos;
 uniform vec4 U_LightAmbient;
@@ -16,7 +15,24 @@ varying vec4 V_Texcoord;
 varying vec4 V_WorldPos;
 varying vec4 V_Normal;
 
-void main() {
+vec4 GetPointLight()
+{
+	float distance=0.0;
+	float constantFactor=1.0;
+	float linearFactor=0.0;
+	float quadricFactor=0.0;
+	vec4 ambientColor=vec4(1.0,1.0,1.0,1.0)*vec4(0.1,0.1,0.1,1.0);
+	vec3 L=vec3(0.0,1.0,0.0)-V_WorldPos.xyz;
+	distance=length(L);
+	float attenuation=1.0/(constantFactor+linearFactor*distance+quadricFactor*quadricFactor*distance);
+	L=normalize(L);
+	vec3 n=normalize(V_Normal.xyz);
+	float diffuseIntensity=max(0.0,dot(L,n));
+	vec4 diffuseColor=vec4(1.0,1.0,1.0,1.0)*vec4(0.1,0.4,0.6,1.0)*diffuseIntensity*attenuation;
+	return ambientColor+diffuseColor;
+}
+void main()
+{
 	vec4 ambientColor=U_LightAmbient*U_AmbientMaterial;
 	vec3 lightPos=U_LightPos.xyz;
 	vec3 L=lightPos;
@@ -32,8 +48,9 @@ void main() {
 	}
 	if(U_LightOpt.y==1.0){
 		gl_FragColor=(ambientColor+diffuseColor)*texture2D(U_Texture,V_Texcoord.xy)+specularColor;
+	}else if(U_LightOpt.z==1.0){
+		gl_FragColor=(ambientColor+diffuseColor+GetPointLight())*texture2D(U_Texture,V_Texcoord.xy);
 	}else if(U_LightOpt.w==1.0){
 		gl_FragColor=ambientColor+diffuseColor+specularColor;
 	}
 }
-

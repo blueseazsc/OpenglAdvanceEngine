@@ -13,12 +13,16 @@ public:
 	{
 		lastTime = currentTime;
 
+		cameraPos = glm::vec3(10.0f, 10.0f, 10.0f);
+
+		viewMatrix = glm::lookAt(cameraPos, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
 		projectionMatrix = glm::perspective(60.f, (float)info.windowWidth / (float)info.windowHeight, 0.1f, 1000.f);
 
 		ground.Init();
 
-		model.Init("Res/Sphere.obj");
-		model.SetTexture("Res/earth.bmp");
+		model.Init("../resources/Sphere.obj");
+		model.SetTexture("../resources/earth.bmp");
 		model.SetPosition(0.0f, 0.0f, 0.0f);
 	}
 	virtual void render(double currentTime)
@@ -30,12 +34,13 @@ public:
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		ground.Draw(viewMatrix, projectionMatrix);
-		model.Draw(0.0f,0.0f,0.0f, viewMatrix, projectionMatrix);
+		model.Draw(cameraPos.x, cameraPos.y, cameraPos.z, viewMatrix, projectionMatrix);
 	}
 private:
 	double lastTime;
 
 	glm::mat4 viewMatrix, projectionMatrix;
+	glm::vec3 cameraPos;
 
 	Ground ground;
 	Model model;

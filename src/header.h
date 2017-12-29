@@ -6,10 +6,8 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
 // Include GLM
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/matrix_inverse.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "Glm/glm.hpp"
+#include "Glm/ext.hpp"
 
 #include <stdio.h>
 #include <math.h>

@@ -97,7 +97,7 @@ void Model::SetTexture(const char *imagePath) {
 	mShader.SetTexture("U_Texture", imagePath);
 }
 void Model::SetPosition(float x, float y, float z) {
-	mModelMatrix = glm::translate(glm::mat4(1.0f),  glm::vec3(x, y, z));
+	mModelMatrix = glm::translate(x, y, z);
 }
 void Model::Draw(float cameraX, float cameraY, float cameraZ, glm::mat4 &viewMatrix, glm::mat4 &projectionMatrix) {
 	glEnable(GL_DEPTH_TEST);

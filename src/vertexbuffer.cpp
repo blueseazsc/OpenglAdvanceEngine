@@ -28,7 +28,7 @@ void VertexBuffer::Unbind() {
 }
 void VertexBuffer::SetPosition(int index, float x, float y, float z, float w /* = 1.0f */) {
 	mVertexes[index].position[0] = x;
-	mVertexes[index].position[1] = -y;
+	mVertexes[index].position[1] = y;
 	mVertexes[index].position[2] = z;
 	mVertexes[index].position[3] = w;
 }
