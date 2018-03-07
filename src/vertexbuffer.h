@@ -20,7 +20,7 @@ public:
 	void Bind();
 	void Unbind();
 	void SetPosition(int index, float x, float y, float z, float w = 1.0f);
-	void SetColor(int index, float r, float g, float b, float a=1.0);
+	void SetColor(int index, float r, float g, float b, float a = 1.0f);
 	void SetTexcoord(int index, float x, float y);
 	void SetNormal(int index, float x, float y, float z);
 	Vertex& Get(int index);
