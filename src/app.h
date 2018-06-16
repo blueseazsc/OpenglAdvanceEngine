@@ -2,7 +2,7 @@
 #define __APPLICATION_H__
 
 // Include GLEW
-#include <GL/glew.h>
+// #include <GL/glew.h>
 
 // Include GLFW
 #include <GLFW/glfw3.h>
@@ -57,11 +57,11 @@ public:
         glfwMakeContextCurrent(window);
 
 		// Initialize GLEW
-		if (glewInit() != GLEW_OK) {
-			fprintf(stderr, "Failed to initialize GLEW\n");
-			glfwTerminate();
-			return;
-		}
+		// if (glewInit() != GLEW_OK) {
+			// fprintf(stderr, "Failed to initialize GLEW\n");
+			// glfwTerminate();
+			// return;
+		// }
 
         glfwSetWindowSizeCallback(window, glfw_onResize);
         glfwSetKeyCallback(window, glfw_onKey);

@@ -27,14 +27,14 @@ void ParticleSystem::Update(float deltaTime) {
 	}
 }
 void ParticleSystem::Draw(glm::mat4 & viewMatrix, glm::mat4 & projectionMatrix) {
-	glEnable(GL_PROGRAM_POINT_SIZE);
-	glDisable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-	mVertexBuffer.Bind();
-	mShader.Bind(glm::value_ptr(mModelMatrix), glm::value_ptr(viewMatrix), glm::value_ptr(projectionMatrix));
-	glDrawArrays(GL_POINTS, 0, mVertexBuffer.GetVertexCount());
-	mVertexBuffer.Unbind();
-	glDisable(GL_BLEND);
-	glDisable(GL_PROGRAM_POINT_SIZE);
+	// glEnable(GL_PROGRAM_POINT_SIZE);
+	// glDisable(GL_DEPTH_TEST);
+	// glEnable(GL_BLEND);
+	// glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	// mVertexBuffer.Bind();
+	// mShader.Bind(glm::value_ptr(mModelMatrix), glm::value_ptr(viewMatrix), glm::value_ptr(projectionMatrix));
+	// glDrawArrays(GL_POINTS, 0, mVertexBuffer.GetVertexCount());
+	// mVertexBuffer.Unbind();
+	// glDisable(GL_BLEND);
+	// glDisable(GL_PROGRAM_POINT_SIZE);
 }
