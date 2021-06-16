@@ -17,7 +17,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
-find_package(GLEW REQUIRED)
+find_package(GLEW 2.0 REQUIRED)
 # find_package(GLM REQUIRED)
 
 find_package(PkgConfig REQUIRED)
